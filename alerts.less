@@ -1,0 +1,149 @@
+// ICON FONTS
+@font-face {
+  font-family: "iconfont";
+  src:url( "iconfont.eot");
+  src:url( "iconfont.eot#iefix") format("embedded-opentype"),
+    url( "iconfont.woff") format("woff"),
+    url( "iconfont.ttf") format("truetype"),
+    url( "iconfont.svg#iconfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import "variables.less";
+@import "plugins.less";
+
+.alert {
+
+	background: @backgroundWhite;
+
+	input.likeText {
+		border: none;
+		outline: none;
+		background: @backgroundWhite;
+	}
+
+	/* alerts header */
+	.head {
+		border-bottom: 2px solid #d3d3d3;
+
+		h3 {
+			padding: 0;
+			margin: 10px 10px 15px 10px;
+
+			input {
+				text-align: center;
+				width: 100%;
+				font-size: 24px;
+			}
+		}
+		/* lokalita */
+		.position {
+			margin:10px 10px 20px 10px;
+			text-align: center;
+			label {
+				font-size:13px;
+				color:@grayFont;
+				width:45%;
+
+				input {
+					font-size:13px;
+					width:30%;
+				}
+			}
+		}
+	}
+
+	/* slider */
+	.slider {
+		width: 90%;
+    margin: 20px auto;
+	}
+
+	/* obecne css jednoho boxu */
+	.box {
+		border-bottom: 2px solid #e7e7e7;
+		padding: 10px;
+
+		h4 {
+			margin: 0;
+			font-size: 16px;
+		}
+
+
+		.boxHeader {
+			position: relative;
+
+			.ico {
+				display: inline-block;
+				width:17px;
+				height:17px;
+				margin:0 2px 0 15px;
+				position: relative;
+				top: 4px;
+			}
+
+			.visibleControl {
+				background: url(svg/arrow_hid.svg) no-repeat center 0;
+				width: 12px;
+				height: 11px;
+				display: inline-block;
+				cursor: pointer;
+
+				&.visible {
+					background: url(svg/arrow_vis.svg) no-repeat 0 0;
+					width: 12px;
+					height: 8px;
+				}
+			}
+
+			.enableControl {
+				background: url(svg/bell_crossed.svg) no-repeat center center;
+				width: 18px;
+				height: 20px;
+				display: block;
+				position: absolute;
+				top: 2px;
+				right: -2px;
+
+				&.enabled {
+					background: url(svg/bell_normal.svg) no-repeat center center;
+				}
+			}
+		}
+	}
+
+  #wind-strength {
+    .boxHeader {
+      .ico.ws {
+        background: url(svg/wind_speed.svg) no-repeat 0 0;
+      }
+      /* sila */
+      .strength {
+        font-size: 12px;
+      }
+    }
+  }
+
+	#wind-direction {
+		.boxHeader {
+			.ico.wd {
+				background: url(svg/wind_direction.svg) no-repeat 0 0;
+			}
+		}
+
+		/* smerova ruzice */
+		#windDirectionControl {
+			display: block;
+			margin: 20px auto;
+
+			.selected {
+				fill: #9D0300;
+				color:#fff;
+			}
+			.selectedText {
+				fill: #fff;
+			}
+		}
+	}
+}

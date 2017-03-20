@@ -1,0 +1,187 @@
+<alert>
+	<div class="alert">
+		<form>
+			<div class="head">
+				<h3>
+					<input type="text" name="locationE" value="{ location }" onblur="{ locationChange }" class="likeText" />
+				</h3>
+				<div class="position">
+					<label>
+						Lat:
+						<input type="text" name="latE" value="{ lat }" class="likeText" onblur="{ locationChange }" />
+					</label>
+
+					<label>
+						Lon:
+						<input type="text" name="latE" value="{ lat }" class="likeText" onblur="{ locationChange }" />
+					</label>
+				</div>
+			</div>
+
+			<div class="box" id="wind-strength">
+				<div class="boxHeader">
+					<h4>
+						<span class="visibleControl {visible: is_ws_visible}" onclick="{ show }" data-box="is_ws_visible"></span>
+						<span class="ico ws"></span>
+						<span class="title">Wind strength: <span class="strength">{ windStrength[0] } -  { windStrength[1] } m/s, { windStrength[2] } - { windStrength[3] } m/s</span></span>
+					</h4>
+					<div class="enableControl {enabled: windStrengthAlert}" onclick="{ setWindStrengthAlert }"></div>
+				</div>
+
+				<div  class="boxBody" show={is_ws_visible}>
+					<div class="slider"></div>
+				</div>
+			</div>
+
+			<div class="box" id="wind-direction">
+				<div class="boxHeader">
+					<h4>
+						<span class="visibleControl {visible: is_wd_visible}" onclick="{ show }" data-box="is_wd_visible"></span>
+						<span class="ico wd"></span>
+						<span class="title">Wind direction: <span class="direction">{ windDirection }</span></span>
+					</h4>
+					<div class="enableControl {enabled: windDirectionAlert}" onclick= { setWindDirectionAlert }></div>
+				</div>
+
+				<div  class="boxBody" show={is_wd_visible}>
+					<svg width="162px" height="162px" viewBox="0 0 162 162" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" id="windDirectionControl" onclick="{ getDirection }">
+					    <title>Direction</title>
+					    <desc>Created with Sketch.</desc>
+					    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+					        <g transform="translate(-140.000000, -294.000000)">
+					            <g transform="translate(141.000000, 295.000000)">
+					                <g stroke="#FAFAFA" stroke-width="2">
+					                    <path d="M48.599814,6.3412093 C38.4621395,10.6444651 31.1505116,15.5765581 23.3626047,23.3626047 C15.5746977,31.1505116 9.93376744,39.6751628 5.80911628,49.8853953 L79.768186,79.768186 L48.599814,6.3412093 Z" id="dc-nw" data-wd="NW" fill="#E4E4E4" class={selected: windDirection == "NW"}></path>
+					                    <path d="M5.80837209,49.8859535 C1.68186047,60.0980465 0,68.7529302 0,79.7668837 C0,90.7808372 2.0372093,100.797581 6.34046512,110.935256 L79.7674419,79.7668837 L5.80837209,49.8859535 Z" id="dc-w" fill="#E4E4E4" data-wd="W" class={selected: windDirection == "W"}></path>
+					                    <path d="M6.3412093,110.93507 C10.6444651,121.072744 15.5765581,128.384372 23.3626047,136.172279 C31.1505116,143.958326 39.6751628,149.601116 49.8853953,153.725767 L79.768186,79.7666977 L6.3412093,110.93507 Z" id="dc-sw" fill="#E4E4E4" data-wd="SW" class={selected: windDirection == "SW"}></path>
+					                    <path d="M79.7674419,79.7674419 L49.8865116,153.726512 C60.0967442,157.853023 68.7534884,159.534884 79.7674419,159.534884 C90.7813953,159.534884 100.796279,157.497674 110.935814,153.194419 L79.7674419,79.7674419 Z" id="dc-s" fill="#E4E4E4" data-wd="S" class={selected: windDirection == "S"}></path>
+					                    <path d="M79.7674419,79.7674419 L110.935814,153.194419 C121.073488,148.891163 128.383256,143.95907 136.171163,136.171163 C143.95907,128.383256 149.6,119.860465 153.726512,109.648372 L79.7674419,79.7674419 Z" id="dc-se" fill="#E4E4E4" data-wd="SE" class={selected: windDirection == "SE"}></path>
+					                    <path d="M153.19386,48.599814 L79.7668837,79.768186 L153.725953,109.649116 C157.852465,99.4370233 159.534326,90.7802791 159.534326,79.768186 C159.534326,68.7542326 157.497116,58.7374884 153.19386,48.599814" id="dc-e" fill="#E4E4E4" data-wd="E" class={selected: windDirection == "E"}></path>
+					                    <path d="M136.171535,23.3633488 C128.383628,15.5754419 119.860837,9.93451163 109.648744,5.808 L79.767814,79.7670698 L153.19293,48.6005581 C148.889674,38.4610233 143.959442,31.1512558 136.171535,23.3633488" id="dc-ne" fill="#E4E4E4" data-wd="NE" class={selected: windDirection == "NE"}></path>
+					                    <path d="M79.7674419,0 C68.7534884,0 58.7386047,2.0372093 48.5990698,6.34046512 L79.7674419,79.7674419 L109.648372,5.80837209 C99.4381395,1.68186047 90.7813953,0 79.7674419,0" id="dc-n" fill="#E4E4E4" data-wd="N" class={selected: windDirection == "N"}></path>
+					                </g>
+					                <g transform="translate(17.000000, 17.000000)" font-size="11" font-family="HelveticaNeue-Medium, Helvetica Neue" font-weight="400">
+					                    <g>
+					                        <g>
+					                            <g transform="translate(59.000000, 0.000000)" fill="#000000">
+					                                <text id="N" class={selectedText: windDirection == "N"}>
+					                                    <tspan x="0.029" y="11">N</tspan>
+					                                </text>
+					                            </g>
+					                            <g transform="translate(95.000000, 18.000000)" fill="#000000">
+					                                <text id="NE" class={selectedText: windDirection == "NE"}>
+					                                    <tspan x="0.564" y="11">NE</tspan>
+					                                </text>
+					                            </g>
+					                            <g transform="translate(120.000000, 57.000000)" fill="#000000">
+					                                <text id="E" class={selectedText: windDirection == "E"}>
+					                                    <tspan x="0.035" y="11">E</tspan>
+					                                </text>
+					                            </g>
+					                            <g transform="translate(96.000000, 96.000000)" fill="#000000">
+					                                <text id="SE" class={selectedText: windDirection == "SE"}>
+					                                    <tspan x="0.971" y="11">SE</tspan>
+					                                </text>
+					                            </g>
+					                            <g transform="translate(59.000000, 114.000000)" fill="#000000">
+					                                <text id="S" class={selectedText: windDirection == "S"}>
+					                                    <tspan x="0.436" y="11">S</tspan>
+					                                </text>
+					                            </g>
+					                            <g transform="translate(15.000000, 96.000000)" fill="#000000">
+					                                <text id="SW" class={selectedText: windDirection == "SW"}>
+					                                    <tspan x="0.244" y="11">SW</tspan>
+					                                </text>
+					                            </g>
+					                            <g transform="translate(0.000000, 57.000000)" fill="#000000">
+					                                <text id="W" class={selectedText: windDirection == "W"}>
+					                                    <tspan x="0.308" y="11">W</tspan>
+					                                </text>
+					                            </g>
+					                            <g transform="translate(14.000000, 18.000000)" fill="#000000">
+					                                <text id="NW" class={selectedText: windDirection == "NW"}>
+					                                    <tspan x="0.337" y="11">NW</tspan>
+					                                </text>
+					                            </g>
+					                        </g>
+					                    </g>
+					                </g>
+					            </g>
+					        </g>
+					    </g>
+					</svg>
+				</div>
+			</div>
+		</form>
+	</div>
+
+	<script>
+		// pri mountu inicializujeme slider
+		this.on('mount', function () {
+			var slider = document.querySelector('.slider');
+
+			noUiSlider.create(slider, {
+				start: [ 0, 10, 20, 30 ],
+				connect: [false, true, false, true, false],
+				range: {
+					'min': [  0 ],
+					'max': [ 40 ]
+				}
+			});
+
+			var connect = slider.querySelectorAll('.noUi-connect');
+			var classes = ['c-1-color', 'c-2-color', 'c-3-color', 'c-4-color', 'c-5-color'];
+			for ( var i = 0; i < connect.length; i++ ) {
+				connect[i].classList.add(classes[i]);
+			}
+
+			slider.noUiSlider.on('update', function( values, handle ) {
+				self.windStrength = values.map(item => Math.round(item));
+				self.update();
+			});
+		})
+
+		// data z formulare
+		this.location  = "Prague";
+		this.lat = "1213.2";
+		this.lon = "17913.2";
+		this.windDirection = "";
+		this.windStrength = [];
+		this.windDirectionAlert = false;
+		this.windStrengthAlert = false;
+
+		// smer vetru
+		this.is_wd_visible = true;
+		// smer vetru
+		this.is_ws_visible = true;
+
+		var self = this;
+
+		/* hlavicka nastaveni polohy*/
+		this.locationChange = function (e) {
+			// podle polohy pak zde setovat i lat a lan a vice versa - z detekce
+		}
+
+		/* zobrazovani boxu */
+		this.show = function (e) {
+			var box = e.target.dataset.box;
+			self[box] = !self[box];
+		}
+
+		/* smer vetru z ruzice - pozor zatim neni poresen label neklika */
+		this.getDirection = function (e) {
+			self.windDirection = e.target.getAttribute("data-wd");
+		}
+
+		/* nastaveni aleru */
+		this.setWindStrengthAlert = function (e) {
+			self.windStrengthAlert = !self.windStrengthAlert;
+		}
+
+		this.setWindDirectionAlert = function (e) {
+			self.windDirectionAlert = !self.windDirectionAlert;
+		}
+
+
+	</script>
+</alert>

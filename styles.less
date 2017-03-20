@@ -1,0 +1,390 @@
+// major CSS file, importing all other ones
+
+@import (less) "leaflet-edited.css";
+
+//=======================================
+//
+//  Global CSS definitions
+//
+//=======================================
+@charset "utf-8";
+
+body, div, dl, dt, dd, ul, ol, li, h1, h2, h3, h4, h5, h6,
+pre, form, fieldset, input, textarea, blockquote, th, td, table {
+    margin: 0;
+    padding: 0;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+* {
+	box-sizing: border-box;
+}
+
+fieldset, img {
+    border: 0
+}
+
+table {
+    border-collapse: collapse;
+}
+
+td {
+	text-align: center;
+}
+
+body {
+    font-family: Helvetica, Arial, sans-serif;
+    color: white;
+	background-color: gray;
+	font-weight: normal;
+	overflow: hidden;
+	font-variant: normal;
+	text-transform: none;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	font-smooth: always;
+}
+
+input {
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+a {
+	text-decoration: none;
+	color: white;
+	cursor: pointer;
+}
+
+a:hover {
+	opacity: 0.8;
+}
+
+// ICON FONTS
+@font-face {
+  font-family: "iconfont";
+  src:url( "/v@{version}/iconfont.eot");
+  src:url( "/v@{version}/iconfont.eot#iefix") format("embedded-opentype"),
+    url( "/v@{version}/iconfont.woff") format("woff"),
+    url( "/v@{version}/iconfont.ttf") format("truetype"),
+    url( "/v@{version}/iconfont.svg#iconfont") format("svg");
+  font-weight: normal;
+  font-style: normal;
+
+}
+
+.iconfont {
+	font-family: iconfont;
+	font-variant: normal;
+	text-transform: none;
+	line-height: 1;
+}
+
+.boxshadow {
+	box-shadow: 0 0 4px 0 rgba(0,0,0,.8);
+}
+
+.mobilehide {
+	@media screen and (max-width: @mobile ) {
+		display: none !important;
+	};
+}
+
+.mobileonly {
+	@media screen and (min-width: @mobile ) {
+		display: none;
+	};
+}
+
+.shadow {
+	text-shadow: 0 0px 4px rgba(0,0,0,0.8);
+}
+
+.clickable {
+	cursor: pointer;
+	&:hover {
+		opacity: 0.8;
+	}
+}
+
+.clickable2 {
+	cursor: pointer;
+	opacity: 0.8;
+	&:hover {
+		opacity: 1;
+	}
+}
+
+// Clickable link with nice transition effect
+.clickableFun(@from: 1; @to: 0.8) {
+	opacity: @from;
+	cursor: pointer;
+	transition: opacity 0.5s linear 0.5s;
+	-webkit-transition: opacity 0.5s linear 0.5s;
+	&:hover {
+		opacity: @to;
+		transition: opacity 0.2s linear;
+		-webkit-transition: opacity 0.2s linear;
+	}
+}
+
+.noselect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+.nomouse {
+	pointer-events: none;
+}
+
+.retina( @content ) {
+	@media
+	only screen and (-webkit-min-device-pixel-ratio: 2),
+	only screen and (   min--moz-device-pixel-ratio: 2),
+	only screen and (     -o-min-device-pixel-ratio: 2/1),
+	only screen and (        min-device-pixel-ratio: 2),
+	only screen and (                min-resolution: 192dpi),
+	only screen and (                min-resolution: 2dppx) {
+
+		@content();
+
+	}
+}
+
+
+//Ajax loader
+.loader {
+	visibility: hidden;
+	opacity:0;
+    transition: visibility 0s linear 0.25s, opacity 0.25s linear;
+    width: 21px;
+    height: 9px;
+	content: url("/img/ajax-loader5.gif");
+	.retina({
+		content: url("/img/ajax-loader5@2x.gif");
+	});
+	z-index: 21;
+	&.show {
+      visibility:visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+}
+
+// FUllscrean layer
+.fullscreen {
+    position:fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+// Class for hiding controlls when user is
+// mooving pop-up on the sceen
+.shy {
+	transition: opacity ease-in-out 0.7s;
+	-webkit-transition: opacity ease-in-out 0.7s;
+}
+
+// Class for hiding controlls when
+// .weather is applied to body
+.shy2 {
+	transition: opacity ease-in-out 0.7s;
+	-webkit-transition: opacity ease-in-out 0.7s;
+}
+
+// Visibility on/off animation
+.animation {
+    visibility:hidden;
+    opacity:0;
+    transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+
+   &.show {
+      visibility:visible;
+      opacity: 1;
+      transition-delay: 0s;
+    }
+}
+
+// "Disabled" element
+.disabled {
+	transition: opacity linear 0.5s;
+	-webkit-transition: opacity linear 0.5s;
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+// Animation that will enter, and
+// leave the page
+.keyframesAnimation {
+	display: none;
+	opacity: 0;
+	&.show {
+		animation-duration: 1s;
+		animation-name: my-fade-in;
+		display: block;
+		opacity: 1;
+	}
+}
+
+.selectable_div {
+	.clickable;
+	float: left;
+	border-bottom: solid 1px;
+	border-top: solid 1px;
+	border-right: solid 1px;
+	padding: 3px 10px;
+	font-size: 15px;
+
+	&.selected {
+		background-color: @myred;
+	}
+
+	&:first-child {
+		border-bottom-left-radius: 5px;
+		border-top-left-radius: 5px;
+		border-left: solid 1px;
+	}
+
+	&:last-child {
+		border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+	}
+}
+
+.selectable_btn {
+	.clickable;
+	float: left;
+	margin-left: 20px;
+	font-size: 15px;
+	border: solid 1px;
+	padding: 3px 10px;
+	border-radius: 5px;
+	font-weight: 400;
+	letter-spacing: 1.2px;
+
+	&.selected {
+		background-color: @myred;
+	}
+}
+
+// Custom checkboxes
+// http://dabblet.com/gist/e269f10328615254e29e
+input[type="checkbox"] {
+	position: absolute;
+	clip: rect(0,0,0,0);
+}
+
+label {
+	cursor: pointer;
+	.noselect;
+}
+
+input[type="checkbox"] + label::before {
+	.iconfont;
+	content: 'G'; //'\e00d';
+	display: inline-block;
+	vertical-align: -0.3em;
+    margin-right: 0.2em;
+    margin-left: .2em;
+    margin-right: .4em;
+    font-size: 1.4em;
+}
+
+input[type="checkbox"]:checked + label::before {
+	content: 'I'; //'\e00e';
+}
+
+
+
+@keyframes my-fade-in {
+    0% { display:none; opacity: 0; }
+    1% { display: block; opacity: 0; }
+    100% { display: block ; opacity: 1; }
+}
+
+// Animation that came to page and
+// disapears
+@keyframes enter-and-leave {
+	0% 	 { display:none; 	opacity: 0; }
+    10%  { display:block; 	opacity: 1; }
+    90%  { display:block; 	opacity: 1; }
+    100% { display:none; 	opacity: 0; }
+}
+
+@keyframes hide-and-appear {
+	0% 	 { display:none; 	opacity: 0; }
+    70%  { display:block; 	opacity: 0; }
+    100% { display:none; 	opacity: 1; }
+}
+
+@import "variables.less";
+@import "menu.less";
+@import "bottom.less";
+@import "rhpane.less";
+@import "rhbottom.less";
+@import "components.less";
+@import "search.less";
+@import "plugins.less";
+@import "weather.less";
+@import "maps.less";
+@import "picker.less";
+@import "globe.less";
+@import "detail.less";
+
+// Small developed with love message
+.not-shy {
+	.shy;
+	.noselect;
+	opacity: 0;
+	visibility: hidden;
+}
+
+#bottom-credits {
+	.shadow;
+	.shy;
+	position: absolute;
+	bottom: 15px;
+	font-size: 12px;
+	text-align: center;
+	width: 100%;
+	&:after {
+		.iconfont;
+		content: 'k';
+		position: relative;
+    	top: 2px;
+    	left: 5px;
+	}
+}
+
+// And we hide E V E R Y T H I N G during moovement
+.moooving {
+	.shy {
+		opacity: 0 ! important;
+	}
+	.not-shy {
+		opacity: 1;
+		visibility: visible;
+	}
+}
+
+// All components sticked to left side
+.left-border {
+	left: 0;
+}
+
+.right-border {
+	right: 0;
+}
+
+.top-border {
+	top: 0;
+}
+
+.bottom-border {
+	bottom: 0;
+}
