@@ -44,8 +44,6 @@ Vlastnosti, kde jsou ulozena data:
 - this.windDirection = "";
 - this.windStrength = [];
 
-U lokace se jen ukladaji rozmery
-
 ### Sila vetru
 Wind Strenght - slider je staticky nastaveny na dva intervaly, asi neni tezke je,j pokud bych chtel pridavat dalsi intervay vzdy prebuildit a pomoci pole start a connect ridit pridavani dalsich intervalu.
 
