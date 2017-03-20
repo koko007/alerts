@@ -44,8 +44,6 @@ Bez jakyvkoliv mediaqueries, je to pouzitelne do sirky cca 235px i min. Nejvetsi
 
 ### Jak by to melo vypadat?
 
-![scr](/scr.png "Screenshot")
-
 ### Pouzite technologie
 - Riot@2.6.X (bohuzel v 3.X.X je  stale plna chyb)
 - Less
