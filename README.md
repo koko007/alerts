@@ -32,9 +32,44 @@ Label: **Name of Alert**
 **< m/s > [input range slider]** - metrika (m/s) je klikaci a velikym fontem. Pri najeti mysi na ni se po obou stranach ukazi sipky a pri kliknuti se zmeni (na animaci se klidne vykasli ). Range slider zacina na 0m/s (vlevo) a konci cca na 40m/s. Pozor pro zmen metriky se ty hodnoty prepoctou na jinou metriku. K dispozici jsou metody W.overlays.wind.convertNumber, ktere budou ve finale k dispozici takze to nemusis resit. POZOR: Range slider rozsah neni spojity. 0-50% slideru zahrnuje vitr 0 - 10m/s, 50%-75% 10 - 20m/s, a zbylych 25% zabira zbytek
 **vetrna ruzice** - kulata vetrna ruzice nakreslena jak byches chtit (SVG, obrazek, HTML5 - CSS3). Ma rozsah `N,NNW,NW,WNW,W,...`. Pri kliknuti na jednotlive sekce se sekce zabarvi na @myred aby bylo jasne, ze jsou vybrane. A ted pozor: Pri mouse over nad ruzici, se stejna ruzice objevuje i na mape v okoli naseho pickeru.
 
+### Poznamky
 
+Vse je jeden riot tag.
 
+Vlastnosti, kde jsou ulozena data:
 
+- this.location  = "Prague";
+- this.lat = "1213.2";
+- this.lon = "17913.2";
+- this.windDirection = "";
+- this.windStrength = [];
 
+U lokace se jen ukladaji rozmery
 
+### Sila vetru
+Wind Strenght - slider je staticky nastaveny na dva intervaly, asi neni tezke je,j pokud bych chtel pridavat dalsi intervay vzdy prebuildit a pomoci pole start a connect ridit pridavani dalsich intervalu.
 
+Design slideru z windytv jsem nevykuchal, ale je to uplne standardni noslider bez zadnych uprav.
+
+### Smer vertu
+Smer vertu jde nastavovat jen pomoci klikani na dilky kolace SVG, je to ta nejjednodussi graficka varianta.
+
+### Zabalovani a zapinani alertu
+Je na sobe uplne nezavisle a udelane pres ridici promene:
+
+##### Zapnuti alertu
+- this.windDirectionAlert = false;
+- this.windStrengthAlert = false;
+
+##### Otevreni polozky
+- this.is_wd_visible = true;
+- this.is_ws_visible = true;
+
+Je to uplne jednoduche, snadne na upravy, ale urcite to neni nejlepsi pokud by tam bylo vic polozek.
+
+### CSS
+Jsou v alerts.less a skoro nepouzivaji nic z windytv jen jsem pouzil @backgroundWhite a @grayFont na dvou mistech.
+
+Rozdeleny jsou na css pro hlavicku coz jsou: nazev mista a zemepisna sirka a delka. Zbytek jsou jednotlive boxy, maj sdilenou class .box a pripadne rozdili jsou dostylovene pres idecka: #wind-strength a #wind-direction.
+
+Bez jakyvkoliv mediaqueries, je to pouzitelne do sirky cca 235px i min. Nejvetsi trabl je s vypsanymi hodnotami v hlavickach jednotlivych boxu.
